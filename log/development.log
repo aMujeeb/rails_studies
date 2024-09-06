@@ -1,0 +1,833 @@
+  [1m[35m (2.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2024-09-05 07:52:46.519768', '2024-09-05 07:52:46.519773') RETURNING "key"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2024-09-05 16:17:58 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/mujee/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/railties-7.1.4/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/mujee/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/railties-7.1.4/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.7ms | Allocations: 377)
+Completed 200 OK in 98ms (Views: 37.3ms | ActiveRecord: 0.0ms | Allocations: 7926)
+
+
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateProjects (20240906021517)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE TABLE "projects" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "description" text, "percent_complete" decimal, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20240906021517') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2024-09-06 10:17:49 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/mujee/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/railties-7.1.4/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/mujee/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/railties-7.1.4/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.6ms | Allocations: 377)
+Completed 200 OK in 104ms (Views: 26.0ms | ActiveRecord: 0.0ms | Allocations: 4303)
+
+
+Started GET "/projects" for 127.0.0.1 at 2024-09-06 10:17:56 +0800
+Processing by ProjectsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering projects/index.html.erb within layouts/application
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/views/projects/index.html.erb:6
+  Rendered projects/index.html.erb within layouts/application (Duration: 6.2ms | Allocations: 1608)
+  Rendered layout layouts/application.html.erb (Duration: 199.3ms | Allocations: 95518)
+Completed 200 OK in 290ms (Views: 202.2ms | ActiveRecord: 3.3ms | Allocations: 105492)
+
+
+Started GET "/projects/new" for 127.0.0.1 at 2024-09-06 10:18:41 +0800
+Processing by ProjectsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering projects/new.html.erb within layouts/application
+  Rendered projects/_form.html.erb (Duration: 68.2ms | Allocations: 5501)
+  Rendered projects/new.html.erb within layouts/application (Duration: 87.6ms | Allocations: 5823)
+  Rendered layout layouts/application.html.erb (Duration: 90.3ms | Allocations: 6932)
+Completed 200 OK in 136ms (Views: 90.7ms | ActiveRecord: 0.4ms | Allocations: 15442)
+
+
+Started POST "/projects" for 127.0.0.1 at 2024-09-06 10:19:22 +0800
+Processing by ProjectsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "project"=>{"title"=>"VsApp", "description"=>"Mobile Application", "percent_complete"=>"10"}, "commit"=>"Create Project"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/projects_controller.rb:27:in `block in create'
+  [1m[36mProject Create (1.7ms)[0m  [1m[32mINSERT INTO "projects" ("title", "description", "percent_complete", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["title", "VsApp"], ["description", "Mobile Application"], ["percent_complete", 10.0], ["created_at", "2024-09-06 02:19:22.869841"], ["updated_at", "2024-09-06 02:19:22.869841"]]
+  ↳ app/controllers/projects_controller.rb:27:in `block in create'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/projects_controller.rb:27:in `block in create'
+Redirected to http://localhost:3000/projects/1
+Completed 302 Found in 9ms (ActiveRecord: 2.7ms | Allocations: 3457)
+
+
+Started GET "/projects/1" for 127.0.0.1 at 2024-09-06 10:19:22 +0800
+Processing by ProjectsController#show as TURBO_STREAM
+  Parameters: {"id"=>"1"}
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/projects_controller.rb:63:in `set_project'
+  Rendering layout layouts/application.html.erb
+  Rendering projects/show.html.erb within layouts/application
+  Rendered projects/_project.html.erb (Duration: 0.4ms | Allocations: 219)
+  Rendered projects/show.html.erb within layouts/application (Duration: 14.0ms | Allocations: 1343)
+  Rendered layout layouts/application.html.erb (Duration: 16.1ms | Allocations: 2441)
+Completed 200 OK in 48ms (Views: 16.7ms | ActiveRecord: 0.2ms | Allocations: 5444)
+
+
+Started GET "/projects" for 127.0.0.1 at 2024-09-06 10:20:00 +0800
+Processing by ProjectsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering projects/index.html.erb within layouts/application
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/views/projects/index.html.erb:6
+  Rendered projects/_project.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered projects/index.html.erb within layouts/application (Duration: 1.3ms | Allocations: 829)
+  Rendered layout layouts/application.html.erb (Duration: 9.1ms | Allocations: 1931)
+Completed 200 OK in 10ms (Views: 9.4ms | ActiveRecord: 0.1ms | Allocations: 2189)
+
+
+Started GET "/projects/new" for 127.0.0.1 at 2024-09-06 10:20:02 +0800
+Processing by ProjectsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering projects/new.html.erb within layouts/application
+  Rendered projects/_form.html.erb (Duration: 1.5ms | Allocations: 978)
+  Rendered projects/new.html.erb within layouts/application (Duration: 1.7ms | Allocations: 1057)
+  Rendered layout layouts/application.html.erb (Duration: 18.3ms | Allocations: 2158)
+Completed 200 OK in 20ms (Views: 18.7ms | ActiveRecord: 0.0ms | Allocations: 2419)
+
+
+Started GET "/projects/1" for 127.0.0.1 at 2024-09-06 10:20:04 +0800
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/projects_controller.rb:63:in `set_project'
+  Rendering layout layouts/application.html.erb
+  Rendering projects/show.html.erb within layouts/application
+  Rendered projects/_project.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered projects/show.html.erb within layouts/application (Duration: 0.9ms | Allocations: 538)
+  Rendered layout layouts/application.html.erb (Duration: 13.5ms | Allocations: 1635)
+Completed 200 OK in 16ms (Views: 13.9ms | ActiveRecord: 0.1ms | Allocations: 2242)
+
+
+Started GET "/projects" for 127.0.0.1 at 2024-09-06 10:20:04 +0800
+Processing by ProjectsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering projects/index.html.erb within layouts/application
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/views/projects/index.html.erb:6
+  Rendered projects/_project.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered projects/index.html.erb within layouts/application (Duration: 1.9ms | Allocations: 831)
+  Rendered layout layouts/application.html.erb (Duration: 9.0ms | Allocations: 1934)
+Completed 200 OK in 10ms (Views: 9.4ms | ActiveRecord: 0.1ms | Allocations: 2186)
+
+
+Started GET "/projects/new" for 127.0.0.1 at 2024-09-06 10:20:05 +0800
+Processing by ProjectsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering projects/new.html.erb within layouts/application
+  Rendered projects/_form.html.erb (Duration: 1.7ms | Allocations: 1014)
+  Rendered projects/new.html.erb within layouts/application (Duration: 2.0ms | Allocations: 1093)
+  Rendered layout layouts/application.html.erb (Duration: 5.9ms | Allocations: 2194)
+Completed 200 OK in 9ms (Views: 6.5ms | ActiveRecord: 0.0ms | Allocations: 2455)
+
+
+Started GET "/projects" for 127.0.0.1 at 2024-09-06 10:20:22 +0800
+Processing by ProjectsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering projects/index.html.erb within layouts/application
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/views/projects/index.html.erb:6
+  Rendered projects/_project.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered projects/index.html.erb within layouts/application (Duration: 2.1ms | Allocations: 834)
+  Rendered layout layouts/application.html.erb (Duration: 14.8ms | Allocations: 1936)
+Completed 200 OK in 16ms (Views: 15.2ms | ActiveRecord: 0.1ms | Allocations: 2188)
+
+
+Started POST "/projects" for 127.0.0.1 at 2024-09-06 10:20:23 +0800
+Processing by ProjectsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "project"=>{"title"=>"Vs.com", "description"=>"Web project", "percent_complete"=>""}, "commit"=>"Create Project"}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/projects_controller.rb:27:in `block in create'
+  [1m[36mProject Create (1.1ms)[0m  [1m[32mINSERT INTO "projects" ("title", "description", "percent_complete", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["title", "Vs.com"], ["description", "Web project"], ["percent_complete", nil], ["created_at", "2024-09-06 02:20:23.578033"], ["updated_at", "2024-09-06 02:20:23.578033"]]
+  ↳ app/controllers/projects_controller.rb:27:in `block in create'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/projects_controller.rb:27:in `block in create'
+Redirected to http://localhost:3000/projects/2
+Completed 302 Found in 4ms (ActiveRecord: 1.5ms | Allocations: 1996)
+
+
+Started GET "/projects/2" for 127.0.0.1 at 2024-09-06 10:20:23 +0800
+Processing by ProjectsController#show as TURBO_STREAM
+  Parameters: {"id"=>"2"}
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/projects_controller.rb:63:in `set_project'
+  Rendering layout layouts/application.html.erb
+  Rendering projects/show.html.erb within layouts/application
+  Rendered projects/_project.html.erb (Duration: 0.0ms | Allocations: 18)
+  Rendered projects/show.html.erb within layouts/application (Duration: 0.8ms | Allocations: 537)
+  Rendered layout layouts/application.html.erb (Duration: 3.6ms | Allocations: 1634)
+Completed 200 OK in 5ms (Views: 4.0ms | ActiveRecord: 0.1ms | Allocations: 2243)
+
+
+Started GET "/projects" for 127.0.0.1 at 2024-09-06 10:20:25 +0800
+Processing by ProjectsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering projects/index.html.erb within layouts/application
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/views/projects/index.html.erb:6
+  Rendered projects/_project.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered projects/_project.html.erb (Duration: 0.0ms | Allocations: 17)
+  Rendered projects/index.html.erb within layouts/application (Duration: 2.3ms | Allocations: 945)
+  Rendered layout layouts/application.html.erb (Duration: 12.8ms | Allocations: 2047)
+Completed 200 OK in 14ms (Views: 13.2ms | ActiveRecord: 0.1ms | Allocations: 2299)
+
+
+Started GET "/projects/2" for 127.0.0.1 at 2024-09-06 10:20:33 +0800
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/projects_controller.rb:63:in `set_project'
+  Rendering layout layouts/application.html.erb
+  Rendering projects/show.html.erb within layouts/application
+  Rendered projects/_project.html.erb (Duration: 0.1ms | Allocations: 18)
+  Rendered projects/show.html.erb within layouts/application (Duration: 0.8ms | Allocations: 531)
+  Rendered layout layouts/application.html.erb (Duration: 3.9ms | Allocations: 1628)
+Completed 200 OK in 5ms (Views: 4.1ms | ActiveRecord: 0.1ms | Allocations: 2234)
+
+
+Started DELETE "/projects/2" for 127.0.0.1 at 2024-09-06 10:20:35 +0800
+Processing by ProjectsController#destroy as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"2"}
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/projects_controller.rb:63:in `set_project'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/projects_controller.rb:52:in `destroy'
+  [1m[36mProject Destroy (0.6ms)[0m  [1m[31mDELETE FROM "projects" WHERE "projects"."id" = ?[0m  [["id", 2]]
+  ↳ app/controllers/projects_controller.rb:52:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/projects_controller.rb:52:in `destroy'
+Redirected to http://localhost:3000/projects
+Completed 302 Found in 4ms (ActiveRecord: 0.7ms | Allocations: 2150)
+
+
+Started GET "/projects" for 127.0.0.1 at 2024-09-06 10:20:35 +0800
+Processing by ProjectsController#index as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering projects/index.html.erb within layouts/application
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/views/projects/index.html.erb:6
+  Rendered projects/_project.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered projects/index.html.erb within layouts/application (Duration: 1.2ms | Allocations: 851)
+  Rendered layout layouts/application.html.erb (Duration: 6.4ms | Allocations: 1953)
+Completed 200 OK in 8ms (Views: 6.7ms | ActiveRecord: 0.1ms | Allocations: 2208)
+
+
+Started GET "/projects/new" for 127.0.0.1 at 2024-09-06 10:20:38 +0800
+Processing by ProjectsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering projects/new.html.erb within layouts/application
+  Rendered projects/_form.html.erb (Duration: 1.8ms | Allocations: 984)
+  Rendered projects/new.html.erb within layouts/application (Duration: 2.1ms | Allocations: 1063)
+  Rendered layout layouts/application.html.erb (Duration: 9.6ms | Allocations: 2164)
+Completed 200 OK in 11ms (Views: 10.1ms | ActiveRecord: 0.0ms | Allocations: 2419)
+
+
+Started GET "/projects/1" for 127.0.0.1 at 2024-09-06 10:20:38 +0800
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/projects_controller.rb:63:in `set_project'
+  Rendering layout layouts/application.html.erb
+  Rendering projects/show.html.erb within layouts/application
+  Rendered projects/_project.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered projects/show.html.erb within layouts/application (Duration: 1.3ms | Allocations: 532)
+  Rendered layout layouts/application.html.erb (Duration: 12.0ms | Allocations: 1629)
+Completed 200 OK in 15ms (Views: 12.6ms | ActiveRecord: 0.1ms | Allocations: 2235)
+
+
+Started GET "/projects" for 127.0.0.1 at 2024-09-06 10:20:40 +0800
+Processing by ProjectsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering projects/index.html.erb within layouts/application
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/views/projects/index.html.erb:6
+  Rendered projects/_project.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered projects/index.html.erb within layouts/application (Duration: 1.6ms | Allocations: 828)
+  Rendered layout layouts/application.html.erb (Duration: 7.4ms | Allocations: 1938)
+Completed 200 OK in 9ms (Views: 7.8ms | ActiveRecord: 0.1ms | Allocations: 2192)
+
+
+Started GET "/projects/1" for 127.0.0.1 at 2024-09-06 10:21:30 +0800
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/projects_controller.rb:63:in `set_project'
+  Rendering layout layouts/application.html.erb
+  Rendering projects/show.html.erb within layouts/application
+  Rendered projects/_project.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered projects/show.html.erb within layouts/application (Duration: 0.7ms | Allocations: 535)
+  Rendered layout layouts/application.html.erb (Duration: 6.3ms | Allocations: 1639)
+Completed 200 OK in 8ms (Views: 6.6ms | ActiveRecord: 0.1ms | Allocations: 2246)
+
+
+Started GET "/" for 127.0.0.1 at 2024-09-06 12:08:05 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/mujee/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/railties-7.1.4/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/mujee/.rbenv/versions/3.2.2/lib/ruby/gems/3.2.0/gems/railties-7.1.4/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.5ms | Allocations: 377)
+Completed 200 OK in 116ms (Views: 23.9ms | ActiveRecord: 0.0ms | Allocations: 4303)
+
+
+Started GET "/projects" for 127.0.0.1 at 2024-09-06 12:08:13 +0800
+Processing by ProjectsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering projects/index.html.erb within layouts/application
+  [1m[36mProject Load (0.0ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/views/projects/index.html.erb:6
+  Rendered projects/_project.html.erb (Duration: 1.2ms | Allocations: 260)
+  Rendered projects/index.html.erb within layouts/application (Duration: 86.1ms | Allocations: 9716)
+  Rendered layout layouts/application.html.erb (Duration: 244.0ms | Allocations: 42151)
+Completed 200 OK in 338ms (Views: 252.9ms | ActiveRecord: 2.5ms | Allocations: 48925)
+
+
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Create (0.8ms)[0m  [1m[32mINSERT INTO "projects" ("title", "description", "percent_complete", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["title", "Project 0"], ["description", "My Cool Project"], ["percent_complete", nil], ["created_at", "2024-09-06 04:17:25.268120"], ["updated_at", "2024-09-06 04:17:25.268120"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Create (0.2ms)[0m  [1m[32mINSERT INTO "projects" ("title", "description", "percent_complete", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["title", "Project 1"], ["description", "My Cool Project"], ["percent_complete", nil], ["created_at", "2024-09-06 04:17:25.271345"], ["updated_at", "2024-09-06 04:17:25.271345"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Create (0.2ms)[0m  [1m[32mINSERT INTO "projects" ("title", "description", "percent_complete", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["title", "Project 2"], ["description", "My Cool Project"], ["percent_complete", nil], ["created_at", "2024-09-06 04:17:25.272265"], ["updated_at", "2024-09-06 04:17:25.272265"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Create (0.1ms)[0m  [1m[32mINSERT INTO "projects" ("title", "description", "percent_complete", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["title", "Project 3"], ["description", "My Cool Project"], ["percent_complete", nil], ["created_at", "2024-09-06 04:17:25.272897"], ["updated_at", "2024-09-06 04:17:25.272897"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Create (0.1ms)[0m  [1m[32mINSERT INTO "projects" ("title", "description", "percent_complete", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["title", "Project 4"], ["description", "My Cool Project"], ["percent_complete", nil], ["created_at", "2024-09-06 04:17:25.273387"], ["updated_at", "2024-09-06 04:17:25.273387"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Create (0.1ms)[0m  [1m[32mINSERT INTO "projects" ("title", "description", "percent_complete", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["title", "Project 5"], ["description", "My Cool Project"], ["percent_complete", nil], ["created_at", "2024-09-06 04:17:25.273818"], ["updated_at", "2024-09-06 04:17:25.273818"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Create (0.1ms)[0m  [1m[32mINSERT INTO "projects" ("title", "description", "percent_complete", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["title", "Project 6"], ["description", "My Cool Project"], ["percent_complete", nil], ["created_at", "2024-09-06 04:17:25.274223"], ["updated_at", "2024-09-06 04:17:25.274223"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Create (0.1ms)[0m  [1m[32mINSERT INTO "projects" ("title", "description", "percent_complete", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["title", "Project 7"], ["description", "My Cool Project"], ["percent_complete", nil], ["created_at", "2024-09-06 04:17:25.274645"], ["updated_at", "2024-09-06 04:17:25.274645"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Create (0.1ms)[0m  [1m[32mINSERT INTO "projects" ("title", "description", "percent_complete", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["title", "Project 8"], ["description", "My Cool Project"], ["percent_complete", nil], ["created_at", "2024-09-06 04:17:25.275321"], ["updated_at", "2024-09-06 04:17:25.275321"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Create (0.1ms)[0m  [1m[32mINSERT INTO "projects" ("title", "description", "percent_complete", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["title", "Project 9"], ["description", "My Cool Project"], ["percent_complete", nil], ["created_at", "2024-09-06 04:17:25.275776"], ["updated_at", "2024-09-06 04:17:25.275776"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/projects" for 127.0.0.1 at 2024-09-06 12:18:09 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ProjectsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering projects/index.html.erb within layouts/application
+  [1m[36mProject Load (0.4ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/views/projects/index.html.erb:6
+  Rendered projects/_project.html.erb (Duration: 0.5ms | Allocations: 271)
+  Rendered projects/_project.html.erb (Duration: 0.0ms | Allocations: 19)
+  Rendered projects/_project.html.erb (Duration: 0.0ms | Allocations: 17)
+  Rendered projects/_project.html.erb (Duration: 0.0ms | Allocations: 17)
+  Rendered projects/_project.html.erb (Duration: 0.0ms | Allocations: 17)
+  Rendered projects/_project.html.erb (Duration: 0.0ms | Allocations: 17)
+  Rendered projects/_project.html.erb (Duration: 0.6ms | Allocations: 17)
+  Rendered projects/_project.html.erb (Duration: 0.0ms | Allocations: 17)
+  Rendered projects/_project.html.erb (Duration: 0.0ms | Allocations: 17)
+  Rendered projects/_project.html.erb (Duration: 0.0ms | Allocations: 17)
+  Rendered projects/_project.html.erb (Duration: 0.0ms | Allocations: 17)
+  Rendered projects/index.html.erb within layouts/application (Duration: 88.2ms | Allocations: 11099)
+  Rendered layout layouts/application.html.erb (Duration: 225.9ms | Allocations: 43529)
+Completed 200 OK in 426ms (Views: 267.0ms | ActiveRecord: 4.4ms | Allocations: 53470)
+
+
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects" /* loading for pp */ LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mProject Count (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "projects"[0m
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" ORDER BY "projects"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" ORDER BY "projects"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mProject Update (0.4ms)[0m  [1m[33mUPDATE "projects" SET "description" = ?, "updated_at" = ? WHERE "projects"."id" = ?[0m  [["description", "Updated Description"], ["updated_at", "2024-09-06 04:30:34.718283"], ["id", 12]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mProject Destroy (1.3ms)[0m  [1m[31mDELETE FROM "projects" WHERE "projects"."id" = ?[0m  [["id", 12]]
+  [1m[36mProject Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "projects"[0m
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" ORDER BY "projects"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+Started GET "/projects" for 127.0.0.1 at 2024-09-06 14:36:47 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ProjectsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering projects/index.html.erb within layouts/application
+  [1m[36mProject Load (0.0ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/views/projects/index.html.erb:6
+  Rendered projects/_project.html.erb (Duration: 0.5ms | Allocations: 271)
+  Rendered projects/_project.html.erb (Duration: 0.0ms | Allocations: 19)
+  Rendered projects/_project.html.erb (Duration: 0.0ms | Allocations: 17)
+  Rendered projects/_project.html.erb (Duration: 0.0ms | Allocations: 17)
+  Rendered projects/_project.html.erb (Duration: 0.0ms | Allocations: 17)
+  Rendered projects/_project.html.erb (Duration: 0.0ms | Allocations: 17)
+  Rendered projects/_project.html.erb (Duration: 0.0ms | Allocations: 17)
+  Rendered projects/_project.html.erb (Duration: 0.0ms | Allocations: 17)
+  Rendered projects/_project.html.erb (Duration: 0.0ms | Allocations: 17)
+  Rendered projects/_project.html.erb (Duration: 0.0ms | Allocations: 17)
+  Rendered projects/index.html.erb within layouts/application (Duration: 43.6ms | Allocations: 10975)
+  Rendered layout layouts/application.html.erb (Duration: 136.9ms | Allocations: 43278)
+Completed 200 OK in 256ms (Views: 152.2ms | ActiveRecord: 2.3ms | Allocations: 53219)
+
+
+  [1m[36mProject Count (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "projects"[0m
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mProject Load (0.5ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" IN (?, ?, ?)[0m  [["id", 1], ["id", 3], ["id", 5]]
+  [1m[36mProject Load (0.4ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" IN (?, ?, ?)[0m  [["id", 1], ["id", 3], ["id", 5]]
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."title" = ? /* loading for pp */ LIMIT ?[0m  [["title", "Project 2"], ["LIMIT", 11]]
+Started GET "/projects" for 127.0.0.1 at 2024-09-06 15:04:48 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ProjectsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering projects/index.html.erb within layouts/application
+  [1m[36mProject Load (0.0ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/views/projects/index.html.erb:6
+  Rendered projects/_project.html.erb (Duration: 0.3ms | Allocations: 271)
+  Rendered projects/_project.html.erb (Duration: 0.0ms | Allocations: 19)
+  Rendered projects/_project.html.erb (Duration: 0.0ms | Allocations: 17)
+  Rendered projects/_project.html.erb (Duration: 0.0ms | Allocations: 17)
+  Rendered projects/_project.html.erb (Duration: 0.0ms | Allocations: 17)
+  Rendered projects/_project.html.erb (Duration: 0.0ms | Allocations: 17)
+  Rendered projects/_project.html.erb (Duration: 0.4ms | Allocations: 17)
+  Rendered projects/_project.html.erb (Duration: 0.0ms | Allocations: 17)
+  Rendered projects/_project.html.erb (Duration: 0.0ms | Allocations: 17)
+  Rendered projects/_project.html.erb (Duration: 0.0ms | Allocations: 17)
+  Rendered projects/index.html.erb within layouts/application (Duration: 48.7ms | Allocations: 10975)
+  Rendered layout layouts/application.html.erb (Duration: 140.5ms | Allocations: 43428)
+Completed 200 OK in 230ms (Views: 156.7ms | ActiveRecord: 5.0ms | Allocations: 53369)
+
+
+Started GET "/projects" for 127.0.0.1 at 2024-09-06 15:29:30 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ProjectsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering projects/index.html.erb within layouts/application
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/views/projects/index.html.erb:6
+  Rendered projects/_project.html.erb (Duration: 0.7ms | Allocations: 271)
+  Rendered projects/_project.html.erb (Duration: 0.0ms | Allocations: 19)
+  Rendered projects/_project.html.erb (Duration: 0.0ms | Allocations: 17)
+  Rendered projects/_project.html.erb (Duration: 0.0ms | Allocations: 17)
+  Rendered projects/_project.html.erb (Duration: 0.0ms | Allocations: 17)
+  Rendered projects/_project.html.erb (Duration: 0.0ms | Allocations: 17)
+  Rendered projects/_project.html.erb (Duration: 0.0ms | Allocations: 17)
+  Rendered projects/_project.html.erb (Duration: 0.0ms | Allocations: 17)
+  Rendered projects/_project.html.erb (Duration: 0.0ms | Allocations: 17)
+  Rendered projects/_project.html.erb (Duration: 0.0ms | Allocations: 17)
+  Rendered projects/index.html.erb within layouts/application (Duration: 89.5ms | Allocations: 10969)
+  Rendered layout layouts/application.html.erb (Duration: 193.9ms | Allocations: 43436)
+Completed 200 OK in 500ms (Views: 246.8ms | ActiveRecord: 4.4ms | Allocations: 53380)
+
+
+Started GET "/about" for 127.0.0.1 at 2024-09-06 15:29:38 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/about"):
+  
+Started GET "/pages/about" for 127.0.0.1 at 2024-09-06 15:30:19 +0800
+Processing by PagesController#about as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/about.html.erb within layouts/application
+  Rendered pages/about.html.erb within layouts/application (Duration: 0.3ms | Allocations: 93)
+  Rendered layout layouts/application.html.erb (Duration: 4.5ms | Allocations: 1483)
+Completed 200 OK in 9ms (Views: 5.5ms | ActiveRecord: 0.0ms | Allocations: 1977)
+
+
+Started GET "/pages/about" for 127.0.0.1 at 2024-09-06 15:32:34 +0800
+Processing by PagesController#about as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/about.html.erb within layouts/application
+  Rendered pages/about.html.erb within layouts/application (Duration: 0.2ms | Allocations: 98)
+  Rendered layout layouts/application.html.erb (Duration: 51.7ms | Allocations: 14783)
+Completed 200 OK in 59ms (Views: 53.3ms | ActiveRecord: 0.0ms | Allocations: 15684)
+
+
+Started GET "/about" for 127.0.0.1 at 2024-09-06 16:06:28 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PagesController#about as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/about.html.erb within layouts/application
+  Rendered pages/about.html.erb within layouts/application (Duration: 1.5ms | Allocations: 188)
+  Rendered layout layouts/application.html.erb (Duration: 187.8ms | Allocations: 34190)
+Completed 200 OK in 398ms (Views: 252.0ms | ActiveRecord: 0.0ms | Allocations: 38283)
+
+
+Started GET "/pages/about" for 127.0.0.1 at 2024-09-06 16:06:45 +0800
+Processing by PagesController#about as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/about.html.erb within layouts/application
+  Rendered pages/about.html.erb within layouts/application (Duration: 0.0ms | Allocations: 7)
+  Rendered layout layouts/application.html.erb (Duration: 16.5ms | Allocations: 1423)
+Completed 200 OK in 18ms (Views: 17.0ms | ActiveRecord: 0.0ms | Allocations: 1667)
+
+
+Started GET "/pages/about" for 127.0.0.1 at 2024-09-06 16:06:48 +0800
+Processing by PagesController#about as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/about.html.erb within layouts/application
+  Rendered pages/about.html.erb within layouts/application (Duration: 0.0ms | Allocations: 7)
+  Rendered layout layouts/application.html.erb (Duration: 10.4ms | Allocations: 1400)
+Completed 200 OK in 12ms (Views: 10.9ms | ActiveRecord: 0.0ms | Allocations: 1638)
+
+
+Started GET "/pages/about" for 127.0.0.1 at 2024-09-06 16:07:13 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [GET] "/pages/about"):
+  
+Started GET "/about" for 127.0.0.1 at 2024-09-06 16:07:24 +0800
+Processing by PagesController#about as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/about.html.erb within layouts/application
+  Rendered pages/about.html.erb within layouts/application (Duration: 0.3ms | Allocations: 98)
+  Rendered layout layouts/application.html.erb (Duration: 78.0ms | Allocations: 32857)
+Completed 200 OK in 87ms (Views: 82.4ms | ActiveRecord: 0.0ms | Allocations: 34680)
+
+
+Started GET "/about" for 127.0.0.1 at 2024-09-06 16:07:55 +0800
+Processing by PagesController#about as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/about.html.erb within layouts/application
+  Rendered pages/about.html.erb within layouts/application (Duration: 0.2ms | Allocations: 100)
+  Rendered layout layouts/application.html.erb (Duration: 25.7ms | Allocations: 14793)
+Completed 200 OK in 32ms (Views: 27.1ms | ActiveRecord: 0.0ms | Allocations: 15696)
+
+
+Started GET "/about" for 127.0.0.1 at 2024-09-06 16:08:51 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PagesController#about as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/about.html.erb within layouts/application
+  Rendered pages/about.html.erb within layouts/application (Duration: 0.2ms | Allocations: 188)
+  Rendered layout layouts/application.html.erb (Duration: 92.4ms | Allocations: 34091)
+Completed 200 OK in 104ms (Views: 95.8ms | ActiveRecord: 0.0ms | Allocations: 38184)
+
+
+Started GET "/home" for 127.0.0.1 at 2024-09-06 16:08:55 +0800
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 0.4ms | Allocations: 95)
+  Rendered layout layouts/application.html.erb (Duration: 5.6ms | Allocations: 1470)
+Completed 200 OK in 12ms (Views: 6.0ms | ActiveRecord: 0.0ms | Allocations: 1775)
+
+
+Started GET "/contact" for 127.0.0.1 at 2024-09-06 16:09:02 +0800
+  
+ActionController::RoutingError (No route matches [GET] "/contact"):
+  
+Started GET "/comtact" for 127.0.0.1 at 2024-09-06 16:09:11 +0800
+Processing by PagesController#contact as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/contact.html.erb within layouts/application
+  Rendered pages/contact.html.erb within layouts/application (Duration: 0.2ms | Allocations: 95)
+  Rendered layout layouts/application.html.erb (Duration: 5.4ms | Allocations: 1478)
+Completed 200 OK in 12ms (Views: 5.8ms | ActiveRecord: 0.0ms | Allocations: 1784)
+
+
+Started GET "/comtact" for 127.0.0.1 at 2024-09-06 16:12:46 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [GET] "/comtact"):
+  
+Started GET "/contact" for 127.0.0.1 at 2024-09-06 16:12:51 +0800
+Processing by PagesController#contact as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/contact.html.erb within layouts/application
+  Rendered pages/contact.html.erb within layouts/application (Duration: 0.2ms | Allocations: 98)
+  Rendered layout layouts/application.html.erb (Duration: 81.2ms | Allocations: 32908)
+Completed 200 OK in 87ms (Views: 82.8ms | ActiveRecord: 0.0ms | Allocations: 34731)
+
+
+Started GET "/about" for 127.0.0.1 at 2024-09-06 16:12:56 +0800
+Processing by PagesController#about as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/about.html.erb within layouts/application
+  Rendered pages/about.html.erb within layouts/application (Duration: 0.5ms | Allocations: 114)
+  Rendered layout layouts/application.html.erb (Duration: 5.9ms | Allocations: 1480)
+Completed 200 OK in 23ms (Views: 6.6ms | ActiveRecord: 0.0ms | Allocations: 1786)
+
+
+Started GET "/projects" for 127.0.0.1 at 2024-09-06 16:19:11 +0800
+Processing by ProjectsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering projects/index.html.erb within layouts/application
+  [1m[36mProject Load (0.0ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/views/projects/index.html.erb:6
+  Rendered projects/_project.html.erb (Duration: 0.6ms | Allocations: 258)
+  Rendered projects/_project.html.erb (Duration: 0.0ms | Allocations: 19)
+  Rendered projects/_project.html.erb (Duration: 0.0ms | Allocations: 17)
+  Rendered projects/_project.html.erb (Duration: 0.0ms | Allocations: 17)
+  Rendered projects/_project.html.erb (Duration: 0.0ms | Allocations: 17)
+  Rendered projects/_project.html.erb (Duration: 0.0ms | Allocations: 17)
+  Rendered projects/_project.html.erb (Duration: 0.0ms | Allocations: 17)
+  Rendered projects/_project.html.erb (Duration: 0.0ms | Allocations: 17)
+  Rendered projects/_project.html.erb (Duration: 0.0ms | Allocations: 17)
+  Rendered projects/_project.html.erb (Duration: 0.0ms | Allocations: 17)
+  Rendered projects/index.html.erb within layouts/application (Duration: 22.1ms | Allocations: 9561)
+  Rendered layout layouts/application.html.erb (Duration: 25.0ms | Allocations: 10688)
+Completed 200 OK in 79ms (Views: 22.8ms | ActiveRecord: 3.2ms | Allocations: 17029)
+
+
+Started GET "/projects/1" for 127.0.0.1 at 2024-09-06 16:19:14 +0800
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/projects_controller.rb:63:in `set_project'
+  Rendering layout layouts/application.html.erb
+  Rendering projects/show.html.erb within layouts/application
+  Rendered projects/_project.html.erb (Duration: 0.1ms | Allocations: 22)
+  Rendered projects/show.html.erb within layouts/application (Duration: 1.7ms | Allocations: 761)
+  Rendered layout layouts/application.html.erb (Duration: 5.6ms | Allocations: 1869)
+Completed 200 OK in 57ms (Views: 6.2ms | ActiveRecord: 0.2ms | Allocations: 4460)
+
+
+Started GET "/" for 127.0.0.1 at 2024-09-06 16:23:22 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 0.7ms | Allocations: 188)
+  Rendered layout layouts/application.html.erb (Duration: 121.4ms | Allocations: 34091)
+Completed 200 OK in 263ms (Views: 145.0ms | ActiveRecord: 0.0ms | Allocations: 39905)
+
+
+Started GET "/" for 127.0.0.1 at 2024-09-06 16:28:55 +0800
+Processing by PagesController#home as HTML
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 488)
+
+
+  
+NameError (uninitialized constant PagesController::Projects):
+  
+app/controllers/pages_controller.rb:10:in `home'
+Started GET "/" for 127.0.0.1 at 2024-09-06 16:29:20 +0800
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 0.3ms | Allocations: 1155)
+  Rendered layout layouts/application.html.erb (Duration: 0.4ms | Allocations: 1247)
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 0.0ms | Allocations: 7936)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    1: <h1>Home</h1>
+    2: <%= @projects.each do |project| %>
+    3:     <p><strong><%= project.title %></strong></p>
+    4: <% end %>
+  
+app/views/pages/home.html.erb:2
+Started GET "/" for 127.0.0.1 at 2024-09-06 16:29:43 +0800
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  [1m[36mProject Load (0.4ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/views/pages/home.html.erb:2
+  Rendered pages/home.html.erb within layouts/application (Duration: 7.2ms | Allocations: 8310)
+  Rendered layout layouts/application.html.erb (Duration: 21.3ms | Allocations: 23008)
+Completed 200 OK in 24ms (Views: 19.8ms | ActiveRecord: 2.7ms | Allocations: 24482)
+
+
+Started GET "/" for 127.0.0.1 at 2024-09-06 16:31:05 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  [1m[36mProject Load (0.0ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/views/pages/home.html.erb:2
+  Rendered pages/home.html.erb within layouts/application (Duration: 6.7ms | Allocations: 8420)
+  Rendered layout layouts/application.html.erb (Duration: 140.0ms | Allocations: 42334)
+Completed 200 OK in 170ms (Views: 142.1ms | ActiveRecord: 1.8ms | Allocations: 52228)
+
+
+Started GET "/" for 127.0.0.1 at 2024-09-06 16:33:37 +0800
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  [1m[36mProject Load (0.0ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/views/pages/home.html.erb:2
+  Rendered pages/home.html.erb within layouts/application (Duration: 3.8ms | Allocations: 4653)
+  Rendered layout layouts/application.html.erb (Duration: 36.2ms | Allocations: 19241)
+Completed 200 OK in 39ms (Views: 35.4ms | ActiveRecord: 2.1ms | Allocations: 20714)
+
+
+Started GET "/" for 127.0.0.1 at 2024-09-06 16:33:41 +0800
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/views/pages/home.html.erb:2
+  Rendered pages/home.html.erb within layouts/application (Duration: 1.5ms | Allocations: 1176)
+  Rendered layout layouts/application.html.erb (Duration: 7.7ms | Allocations: 2550)
+Completed 200 OK in 9ms (Views: 8.0ms | ActiveRecord: 0.1ms | Allocations: 2809)
+
+
+Started GET "/" for 127.0.0.1 at 2024-09-06 16:34:06 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  [1m[36mProject Load (0.0ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/views/pages/home.html.erb:2
+  Rendered pages/home.html.erb within layouts/application (Duration: 6.4ms | Allocations: 8420)
+  Rendered layout layouts/application.html.erb (Duration: 105.8ms | Allocations: 42469)
+Completed 200 OK in 128ms (Views: 107.2ms | ActiveRecord: 1.6ms | Allocations: 52361)
+
+
+Started GET "/" for 127.0.0.1 at 2024-09-06 16:36:03 +0800
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  [1m[36mProject Load (0.0ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/views/pages/home.html.erb:2
+  Rendered pages/home.html.erb within layouts/application (Duration: 3.9ms | Allocations: 3996)
+  Rendered layout layouts/application.html.erb (Duration: 39.1ms | Allocations: 18586)
+Completed 200 OK in 47ms (Views: 38.2ms | ActiveRecord: 2.5ms | Allocations: 20059)
+
+
+Started GET "/blog" for 127.0.0.1 at 2024-09-06 16:41:16 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Redirected to https://www.youtube.com/
+Completed 301 Moved Permanently in 2ms
+
+
+Started GET "/" for 127.0.0.1 at 2024-09-06 17:06:36 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/views/pages/home.html.erb:2
+  Rendered pages/home.html.erb within layouts/application (Duration: 21.4ms | Allocations: 7602)
+  Rendered layout layouts/application.html.erb (Duration: 197.2ms | Allocations: 41558)
+Completed 200 OK in 383ms (Views: 228.7ms | ActiveRecord: 4.5ms | Allocations: 51456)
+
+
+Started GET "/about" for 127.0.0.1 at 2024-09-06 17:06:50 +0800
+Processing by PagesController#about as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/about.html.erb within layouts/application
+  Rendered pages/about.html.erb within layouts/application (Duration: 0.4ms | Allocations: 116)
+  Rendered layout layouts/application.html.erb (Duration: 3.5ms | Allocations: 1508)
+Completed 200 OK in 10ms (Views: 3.9ms | ActiveRecord: 0.0ms | Allocations: 1815)
+
+
+Started GET "/blog" for 127.0.0.1 at 2024-09-06 17:06:55 +0800
+Redirected to https://www.youtube.com/
+Completed 301 Moved Permanently in 0ms
+
+
+Started GET "/aboutz" for 127.0.0.1 at 2024-09-06 17:08:21 +0800
+Redirected to http://localhost:3000/error
+Completed 301 Moved Permanently in 0ms
+
+
+Started GET "/error" for 127.0.0.1 at 2024-09-06 17:08:21 +0800
+Processing by PagesController#error as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/error.html.erb within layouts/application
+  Rendered pages/error.html.erb within layouts/application (Duration: 0.4ms | Allocations: 191)
+  Rendered layout layouts/application.html.erb (Duration: 5.2ms | Allocations: 1559)
+Completed 200 OK in 14ms (Views: 5.6ms | ActiveRecord: 0.0ms | Allocations: 1859)
+
+
+Started GET "/" for 127.0.0.1 at 2024-09-06 17:08:23 +0800
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/views/pages/home.html.erb:2
+  Rendered pages/home.html.erb within layouts/application (Duration: 1.1ms | Allocations: 532)
+  Rendered layout layouts/application.html.erb (Duration: 6.6ms | Allocations: 1898)
+Completed 200 OK in 8ms (Views: 6.9ms | ActiveRecord: 0.1ms | Allocations: 2153)
+
+
+Started GET "/" for 127.0.0.1 at 2024-09-06 17:35:11 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/views/pages/home.html.erb:2
+  Rendered pages/home.html.erb within layouts/application (Duration: 29.2ms | Allocations: 7596)
+  Rendered layout layouts/application.html.erb (Duration: 203.9ms | Allocations: 41775)
+Completed 200 OK in 508ms (Views: 267.3ms | ActiveRecord: 6.1ms | Allocations: 51667)
+
+
+Started GET "/" for 127.0.0.1 at 2024-09-06 17:36:02 +0800
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/views/pages/home.html.erb:2
+  Rendered pages/home.html.erb within layouts/application (Duration: 1.4ms | Allocations: 532)
+  Rendered layout layouts/application.html.erb (Duration: 10.3ms | Allocations: 1985)
+Completed 200 OK in 12ms (Views: 10.6ms | ActiveRecord: 0.1ms | Allocations: 2242)
+
+
+Started GET "/about" for 127.0.0.1 at 2024-09-06 17:36:02 +0800
+Processing by PagesController#about as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/about.html.erb within layouts/application
+  Rendered pages/about.html.erb within layouts/application (Duration: 0.7ms | Allocations: 116)
+  Rendered layout layouts/application.html.erb (Duration: 6.3ms | Allocations: 1570)
+Completed 200 OK in 13ms (Views: 6.9ms | ActiveRecord: 0.0ms | Allocations: 1874)
+
+
+Started GET "/contact" for 127.0.0.1 at 2024-09-06 17:36:04 +0800
+Processing by PagesController#contact as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/contact.html.erb within layouts/application
+  Rendered pages/contact.html.erb within layouts/application (Duration: 0.3ms | Allocations: 93)
+  Rendered layout layouts/application.html.erb (Duration: 4.2ms | Allocations: 1556)
+Completed 200 OK in 14ms (Views: 4.5ms | ActiveRecord: 0.0ms | Allocations: 1857)
+
+
+Started GET "/blog" for 127.0.0.1 at 2024-09-06 17:36:06 +0800
+Redirected to https://www.youtube.com/
+Completed 301 Moved Permanently in 0ms
+
+
+Started GET "/blog" for 127.0.0.1 at 2024-09-06 17:36:07 +0800
+Redirected to https://www.youtube.com/
+Completed 301 Moved Permanently in 0ms
+
+
+Started GET "/projects" for 127.0.0.1 at 2024-09-06 17:36:12 +0800
+Processing by ProjectsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering projects/index.html.erb within layouts/application
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/views/projects/index.html.erb:6
+  Rendered projects/_project.html.erb (Duration: 0.6ms | Allocations: 249)
+  Rendered projects/_project.html.erb (Duration: 0.0ms | Allocations: 19)
+  Rendered projects/_project.html.erb (Duration: 0.0ms | Allocations: 17)
+  Rendered projects/_project.html.erb (Duration: 0.0ms | Allocations: 17)
+  Rendered projects/_project.html.erb (Duration: 0.0ms | Allocations: 17)
+  Rendered projects/_project.html.erb (Duration: 0.0ms | Allocations: 17)
+  Rendered projects/_project.html.erb (Duration: 0.0ms | Allocations: 17)
+  Rendered projects/_project.html.erb (Duration: 0.0ms | Allocations: 17)
+  Rendered projects/_project.html.erb (Duration: 0.0ms | Allocations: 17)
+  Rendered projects/_project.html.erb (Duration: 0.0ms | Allocations: 17)
+  Rendered projects/index.html.erb within layouts/application (Duration: 15.4ms | Allocations: 2728)
+  Rendered layout layouts/application.html.erb (Duration: 18.1ms | Allocations: 3922)
+Completed 200 OK in 29ms (Views: 19.0ms | ActiveRecord: 0.1ms | Allocations: 4476)
+
+
+Started GET "/" for 127.0.0.1 at 2024-09-06 17:36:19 +0800
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/views/pages/home.html.erb:2
+  Rendered pages/home.html.erb within layouts/application (Duration: 1.5ms | Allocations: 530)
+  Rendered layout layouts/application.html.erb (Duration: 14.7ms | Allocations: 1978)
+Completed 200 OK in 16ms (Views: 15.3ms | ActiveRecord: 0.1ms | Allocations: 2231)
+
+
