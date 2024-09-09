@@ -11,12 +11,10 @@
   </head>
 
   <body>
-    <%= link_to "Home", root_path %>
-    <%= link_to "About", about_path %>
-    <%= link_to "Contact", contact_path %>
-    <%= link_to "Blog", blog_path %>
-     <%= link_to "Projects", projects_path %>
+  <%= image_tag("logos/logo.png", width: '100px') %>
 
-    <%= yield %>
+  <%= render "shared/nav" %>
+
+  <%= yield %>
   </body>
 </html>
