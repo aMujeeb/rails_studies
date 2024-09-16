@@ -1,0 +1,21 @@
+<hr>
+<h3><%= @task.title %></h3>
+<p><%= @task.description %></p>
+
+<h4>Task Started : <%= @task.created_at %></h4>
+<% if @task.created_at != @task.updated_at %>
+    <h4>
+        Task Updated : <%= @task.updated_at %>
+    </h4>
+
+<% end %>
+
+<% if @task.completed == true %>
+    <p>Task is Completed</p>
+<% else %>
+    <p>Task is Pending</p>
+<% end %>
+
+<%= link_to "Edit Task", edit_project_task_path(@task.project_id, @task.id) %>
+
+<%= link_to "Back to Project", project_path(@task.project_id) %>

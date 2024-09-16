@@ -8,6 +8,7 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1 or /projects/1.json
   def show
+    @tasks = @project.tasks  # store all tasks associated with that project. void query on vie page
   end
 
   # GET /projects/new
